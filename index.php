@@ -24,5 +24,6 @@ $log->debug(
 		)
 	)
 );
+$log->close();
 ?>
 </pre>

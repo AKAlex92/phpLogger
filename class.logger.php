@@ -19,6 +19,7 @@ class PHPLogger {
 
 	function __destruct() {
 		echo "Destroying class " . __CLASS__;
+		// $this->close();
 	}
 
 	function createDir($d) {
@@ -99,6 +100,10 @@ class PHPLogger {
 
 	function debug($str) {
 		$this->modelMessage('debug', $str);
+	}
+
+	function close() {
+		$this->write2Output(str_repeat("-", 120));
 	}
 
 
