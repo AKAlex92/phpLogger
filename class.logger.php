@@ -39,7 +39,12 @@ class PHPLogger {
 	function getBaseString($level) {
 		$allowedLevels = array('info', 'warning', 'error', 'debug');
 		if(in_array($level, $allowedLevels)) {
-			return "[" . date($this->dateFormat) . "]" . " " . "[ " . strtoupper($level) . " ]\t";
+			$arr_string = array(
+				"[ " . date($this->dateFormat) . " ]",
+				"[ " . basename($_SERVER['PHP_SELF']) . " ]",
+				"[ " . strtoupper($level) . " ]"
+			);
+			return implode(" ", $arr_string) . "\t";
 		}
 		else {
 			die("Level not defined");
