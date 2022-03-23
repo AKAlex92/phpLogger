@@ -76,12 +76,10 @@ class PHPLogger {
 			$this->write2Output($this->getBaseString($level) . $str2Log);
 		}
 		else {
+			// $str2Log = "Variable: " . $key . " => " . $val;
+			// $this->write2Output($this->getBaseString($level) . $str2Log);
 			foreach($str as $key => $val) {
-				// $str2Log = "Variable: " . $key . " => " . $val;
-				// $this->write2Output($this->getBaseString($level) . $str2Log);
-				foreach($str as $key => $val) {
-					$str2Log = $this->util->test_print2( array($key => $val), $level);
-				}
+				$str2Log = $this->util->test_print2( array($key => $val), $level);
 			}
 		}
 	}
