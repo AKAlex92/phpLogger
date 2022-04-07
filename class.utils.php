@@ -17,7 +17,7 @@ class Utility {
 		$isFromArray = (isset($keyArray) && $keyArray != "" ? true : false );
 
 		foreach($arr as $key => $val) {
-			if(!is_array($val)) {
+			if(is_string($val)) {
 				$str2Log = "Variable" . ($isFromArray === true ? " of array " . $keyArray : "") . " : " . $key . " => " . $val;
 				unset($arr[$key]);
 				// if($isFromArray === true ? $buff .= $str2Log : return $str2Log );
@@ -32,6 +32,9 @@ class Utility {
 				$this->logClass->write2Output($this->logClass->getBaseString($level) . $str2Log);
 			}
 			else {
+				if(is_object($val)) {
+					$arr[$key] = get_object_vars($val);
+				}
 				$buff = $this->test_print2($arr[$key], $level, $key, $buff);
 			}
 		}
